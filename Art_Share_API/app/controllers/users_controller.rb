@@ -38,6 +38,14 @@ class UsersController < ApplicationController
         end
     end
 
+    def favorite_artworks
+        render json: User.find(params[:id]).favorite_artworks
+    end
+
+    def favorite_shared_artworks
+        render json: User.find(params[:id]).favorite_shared_artworks
+    end
+
     private
 
     def user_params

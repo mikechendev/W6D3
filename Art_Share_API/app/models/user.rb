@@ -17,6 +17,8 @@ class User < ApplicationRecord
         foreign_key: :user_id,
         class_name: :Comment
 
+    has_many :likes
+
     def self.search(search)
         if search
             @username = User.find_by(username: search)

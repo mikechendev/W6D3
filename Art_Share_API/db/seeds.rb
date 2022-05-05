@@ -46,3 +46,8 @@ comment1 = Comment.create(body: 'does this work??', artwork_id: artwork1.id, use
 comment2 = Comment.create(body: 'this sucks', artwork_id: artwork2.id, user_id: u2.id)
 comment3 = Comment.create(body: 'hello?', artwork_id: artwork3.id, user_id: u3.id)
 comment4 = Comment.create(body: 'wtf??', artwork_id: artwork4.id, user_id: u4.id)
+
+like1 = Like.create(user_id: u1.id, likeable_id: artwork1.id, likeable_type: Artwork )
+like2 = Like.create(user_id: u2.id, likeable_id: comment1.id, likeable_type: Comment )
+like3 = Like.create(user_id: u3.id, likeable_id: comment2.id, likeable_type: Comment )
+like4 = Like.create(user_id: u3.id, likeable_id: artwork2.id, likeable_type: Artwork )

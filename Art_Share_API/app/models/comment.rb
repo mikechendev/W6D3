@@ -8,4 +8,6 @@ class Comment < ApplicationRecord
         class_name: :Artwork,
         foreign_key: :artwork_id,
         dependent: :destroy
+
+    has_many :likes, as: :likeable
 end
