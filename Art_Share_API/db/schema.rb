@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2022_05_05_154118) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "favorite"
-    t.index ["artist_id", "title"], name: "index_artworks_on_artist_id_and_title"
+    t.index ["artist_id"], name: "index_artworks_on_artist_id"
   end
 
   create_table "comments", force: :cascade do |t|

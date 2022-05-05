@@ -10,11 +10,13 @@ User.destroy_all
 Artwork.destroy_all
 ArtworkShare.destroy_all
 Comment.destroy_all
+Like.destroy_all
 
 ApplicationRecord.connection.reset_pk_sequence!('users')
 ApplicationRecord.connection.reset_pk_sequence!('artworks')
 ApplicationRecord.connection.reset_pk_sequence!('artwork_shares')
 ApplicationRecord.connection.reset_pk_sequence!('comments')
+ApplicationRecord.connection.reset_pk_sequence!('like')
 
 u1 = User.create(username: 'Tom')
 u2 = User.create(username: 'Duncan')
