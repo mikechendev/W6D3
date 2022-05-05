@@ -6,33 +6,36 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-users = User.create([
-    { username: 'Tom'}, 
-    { username: 'Duncan'}, 
-    { username: 'Leo'}, 
-    { username: 'Nikhil'}, 
-    { username: 'Kevin'}, 
-    { username: 'Vivian'}
-])
+User.destroy_all
+Artwork.destroy_all
+ArtworkShare.destroy_all
 
-artworks = Artwork.create([
-    {artist_id: 1, title: 'Mona Lisa', image_url: 'monalisa.url'},
-    {artist_id: 2, title: 'The Raft of the Medusa', image_url: 'theraftofthemedusa.url'},
-    {artist_id: 2, title: 'Studio of a Painter', image_url: 'studioofapainter.url'},
-    {artist_id: 3, title: 'Are you jealous?', image_url: 'areyoujealous?.url'},
-    {artist_id: 4, title: 'American Gothic', image_url: 'americangothic.url'},
-    {artist_id: 5, title: 'The Starry Night', image_url: 'thestarrynight.url'},
-    {artist_id: 6, title: 'The Night Cafe', image_url: 'thenightcafe.url'},
-    {artist_id: 6, title: 'Girl with a Pearl Earring', image_url: 'girlwithapearlearring.url'}
-])
+ApplicationRecord.connection.reset_pk_sequence!('users')
+ApplicationRecord.connection.reset_pk_sequence!('artworks')
+ApplicationRecord.connection.reset_pk_sequence!('artwork_shares')
 
-artwork_share = ArtworkShare.create([
-    {artwork_id: 1, viewer_id: 2},
-    {artwork_id: 2, viewer_id: 1},
-    {artwork_id: 3, viewer_id: 4},
-    {artwork_id: 4, viewer_id: 3},
-    {artwork_id: 5, viewer_id: 7},
-    {artwork_id: 6, viewer_id: 5},
-    {artwork_id: 7, viewer_id: 6},
-    {artwork_id: 8, viewer_id: 8}
-])
+u1 = User.create(username: 'Tom')
+u2 = User.create(username: 'Duncan')
+u3 = User.create(username: 'Leo')
+u4 = User.create(username: 'Nikhil')
+u5 = User.create(username: 'Kevin')
+u6 = User.create(username: 'Vivian')
+
+artwork1 = Artwork.create(artist_id: u1.id, title: 'Mona Lisa', image_url: 'monalisa.url')
+artwork2 = Artwork.create(artist_id: u2.id, title: 'The Raft of the Medusa', image_url: 'theraftofthemedusa.url')
+artwork3 = Artwork.create(artist_id: u2.id, title: 'Studio of a Painter', image_url: 'studioofapainter.url')
+artwork4 = Artwork.create(artist_id: u3.id, title: 'Are you jealous?', image_url: 'areyoujealous?.url')
+artwork5 = Artwork.create(artist_id: u4.id, title: 'American Gothic', image_url: 'americangothic.url')
+artwork6 = Artwork.create(artist_id: u5.id, title: 'The Starry Night', image_url: 'thestarrynight.url')
+artwork7 = Artwork.create(artist_id: u6.id, title: 'The Night Cafe', image_url: 'thenightcafe.url')
+artwork8 = Artwork.create(artist_id: u6.id, title: 'Girl with a Pearl Earring', image_url: 'girlwithapearlearring.url')
+
+
+artworkshare1 = ArtworkShare.create(artwork_id: artwork1.id, viewer_id: u2.id)
+artworkshare2 = ArtworkShare.create(artwork_id: artwork2.id, viewer_id: u1.id)
+artworkshare3 = ArtworkShare.create(artwork_id: artwork3.id, viewer_id: u4.id)
+artworkshare4 = ArtworkShare.create(artwork_id: artwork4.id, viewer_id: u3.id)
+artworkshare5 = ArtworkShare.create(artwork_id: artwork5.id, viewer_id: u5.id)
+artworkshare6 = ArtworkShare.create(artwork_id: artwork6.id, viewer_id: u6.id)
+artworkshare7 = ArtworkShare.create(artwork_id: artwork7.id, viewer_id: u5.id)
+artworkshare8 = ArtworkShare.create(artwork_id: artwork6.id, viewer_id: u6.id)

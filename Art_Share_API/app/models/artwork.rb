@@ -1,9 +1,10 @@
 class Artwork < ApplicationRecord
-    validates :title, uniqueness: { scope: :artist_id }
+    validates :title, uniqueness: { scope: :artist_id, message: 'a single user cannot have the same artwork' }
 
     belongs_to :artist,
         foreign_key: :artist_id,
-        class_name: :User
+        class_name: :User,
+        dependent: :destroy
 
     has_many :artwork_shares,
         foreign_key: :artwork_id,

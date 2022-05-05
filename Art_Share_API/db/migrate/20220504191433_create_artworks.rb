@@ -7,6 +7,6 @@ class CreateArtworks < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    add_index :artworks, :artist_id
+    add_index :artworks, [:artist_id, :title]
   end
 end

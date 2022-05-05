@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   # get 'artworks/destroy'
   # get 'artworks/update'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users, only: [:index, :show, :create, :destroy, :update] do
+  resources :users, only: [:index, :show, :create, :destroy, :update]
+  resources :users do
     resources :artworks, only: [:index]
   end
   # get 'users', to: 'users#index'
