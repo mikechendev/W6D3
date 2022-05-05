@@ -1,13 +1,17 @@
 class UsersController < ApplicationController
 
     def index
-        @users = User.all
-        render json: @users
+        if params[:username]
+            render json: User.search(params[:username])
+        else
+            @users = User.all
+            render json: @users
+        end
     end
 
     def create
         @user = User.new(user_params)
-        if @user.save!
+        if @user.save
             redirect_to users_url(@user)
         else
             render json: @user.errors.full_messages, status: :unprocessable_entity

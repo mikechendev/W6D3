@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
+  get 'comments/create'
+  get 'comments/destroy'
+  get 'comments/index'
   resources :artworks, only: [:show, :create, :destroy, :update]
+  resources :artworks do
+    resources :comments, only: [:index, :create, :destroy]
+  end
   # get 'artwork_shares/create'
   # get 'artwork_shares/destroy'
   # get 'artworks/index'
@@ -11,6 +17,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :create, :destroy, :update]
   resources :users do
     resources :artworks, only: [:index]
+    resources :comments, only: [:index, :create, :destroy]
   end
   # get 'users', to: 'users#index'
   # get 'users/:id', to: 'users#show', as: 'user'
