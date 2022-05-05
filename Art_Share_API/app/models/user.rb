@@ -31,4 +31,12 @@ class User < ApplicationRecord
             @username.all
         end
     end
+
+    def favorite_artworks
+        self.artworks.where('artworks.favorite = True')
+    end
+
+    def favorite_shared_artworks
+        self.artwork_shares.where('artwork_shares.favorite = True')
+    end
 end
